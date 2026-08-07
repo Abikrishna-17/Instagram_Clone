@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+     <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+    <div id="post_page_div" style="text-align:center">
+    <br>
+    <h1> Upload Your Photo or Video Here</h1>
+    <input type="file" id="choose_file">
+    <button id="post_button" > Post </button>
+    </div>
+    <script src="navbar.js"></script>
+
+    <script>
+        
+        const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/passwords";
+
+        const file = document.getElementById("choose_file");
+        const post_btn = document.getElementById("post_button");
+        post_btn.addEventListener("click",postcontent);
+
+        async function postcontent(){
+
+            const userid = localStorage.getItem("userid");
+            const response = await fetch(`${API}/${userid}`);
+            const user = await response.json();
+            const reel_arr = user.reels;
+            reel_arr.push(String(file.files[0].name))       
+        }
+    </script>
+</body>
+</html>

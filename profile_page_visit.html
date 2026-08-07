@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navbar.css">
+</head>
+<body style="text-align:center">
+
+    <div id="navbar"></div>
+    <div id="profile_page_div">
+        <h1>
+            Profile
+        </h1>
+        <h2 id="name">
+            Name : 
+        </h2>
+        <h2 id="username">
+            Username : 
+        </h2>
+        <button id="follow_button">
+            Follow
+        </button>
+        <button id="message_button">
+            Message
+        </button>
+    </div>
+    <script src="navbar.js"></script>
+    <script>
+        const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/passwords"
+        const names = document.getElementById("name");
+        const username = document.getElementById("username");
+        const chatpage = document.getElementById("message_button");
+        const params = new URLSearchParams(window.location.search);
+
+        chatpage.addEventListener("click",()=>{
+            window.location.href = `chat.html?id=${params.get("id")}`
+        })
+
+
+        async function showprofile(){
+            const response = await fetch(`${API}/${params.get("id")}`);
+            const users = await response.json();
+
+            username.textContent = `Username: ${users.username}`;
+            names.textContent = `Name: ${users.name}`;
+        }
+        showprofile();
+    </script>
+</body>
+</html>

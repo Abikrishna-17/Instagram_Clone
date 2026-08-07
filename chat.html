@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" src="navbar.css">
+</head>
+<body>
+    <style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+#add_message{
+    flex:1;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+}
+
+#add_message div{
+    align-self:flex-end;
+    padding:10px 15px;
+    border-radius:18px;
+    margin-bottom:10px;
+    max-width:70%;
+}
+
+#message{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:300px;
+}
+
+#msg_btn{
+    position:fixed;
+    bottom:20px;
+    left:calc(50% + 170px);
+}
+    </style>
+    <input id="message">
+    <button id="msg_btn"> send </button>
+    <div id="add_message"></div>
+    <script src="navbar.js"></script>
+    <script>
+
+        const msg_btn = document.getElementById('msg_btn');
+        const add_message = document.getElementById('add_message');
+        const message = document.getElementById('message');
+
+        message.addEventListener("keyup",(event)=>{
+
+            if(event.key ==="Enter"){
+                const new_element = document.createElement('div')
+                new_element.textContent = message.value;
+                const more_options = document.createElement('select');
+                more_options.innerHTML = `<option style="default:none"> ... </option>
+                                            <option> delete </option>`;
+                new_element.appendChild(more_options);
+                add_message.appendChild(new_element);
+                message.value = null;
+            }
+        })
+
+        msg_btn.addEventListener("click",()=>{
+                const new_element = document.createElement('div')
+                new_element.textContent = message.value;
+                add_message.appendChild(new_element);
+                message.value = null;
+        })
+    </script>
+</body>
+</html>

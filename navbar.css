@@ -1,0 +1,10 @@
+#home_navbar{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background:rgb(229, 130, 147);
+        }
+#home_navbar h3{
+            color:white;
+            text-decoration:none;
+        }

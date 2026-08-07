@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navbar.css">
+    <title>Document</title>
+</head>
+<body style="text-align:center">
+
+
+    <div id="navbar"></div>
+    <br>
+    <input type="search" id="search" placeholder="Search User">
+    <div id="results"></div>
+    <script src="navbar.js"></script>
+    <script>
+
+        const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/passwords";
+        const search = document.getElementById("search");
+        const results = document.getElementById("results");
+        
+        let timer;
+        search.addEventListener("input",()=>{
+
+            clearTimeout(timer);
+            timer = setTimeout(async ()=>{
+
+                const user = await fetch(API);
+                const res = await user.json();
+
+                const search_result = res.filter(u => 
+                    u.username.toLowerCase().includes(search.value.toLowerCase())
+                )
+                results.innerHTML = "";
+                search_result.forEach(user=>{
+                    results.innerHTML += `
+                <div class="result" onclick="window.location.href='profile_page_visit.html?id=${user.id}'">
+                            ${user.username}
+                </div>`;
+                })
+                if(search.value===""){
+                    results.innerHTML = "";
+                }
+            });
+        })
+    </script>
+</body>
+</html>

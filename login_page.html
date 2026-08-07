@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align:center">
+    <h1 id="login_header">
+        Login Page
+    </h1>
+    <div id="login_div" >
+        <h2>Username</h2>
+        <input id="user_input">
+        <h2>Password</h2>
+        <input id="pass_input" type="password"><br><br>
+        
+        <button id="login_button"> Login </button>
+        
+        <a href="signup_page.html">
+        <button type="button">Signup</button>
+        </a>
+    </div>
+    <script>
+        const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/passwords"
+        let login_button = document.getElementById('login_button');
+        let user_input = document.getElementById('user_input');
+        let user_pass = document.getElementById("pass_input");
+
+        login_button.addEventListener("click",login);
+        
+        async function login(){
+
+            try{
+            const login_fetch = await fetch(API);
+            const res = await login_fetch.json();
+
+            const response = res.find(u=> u.username===user_input.value);
+
+            if(response){
+                if(response.password===user_pass.value){
+                    localStorage.setItem("userid",response.id);
+                    window.location.href = "home_page.html";
+                }
+                else{
+                    alert("password was wrong")
+                }
+            }
+            else{
+                alert("username not found");
+            }
+    
+            }
+            catch(err){
+                console.log(err.message)
+            }
+        }
+
+    </script>
+</body>
+</html>

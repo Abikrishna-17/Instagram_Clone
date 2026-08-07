@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup page</title>
+</head>
+<body style="text-align:center">
+    <h1 id="signup_header">
+        Signup Page
+    </h1>
+    <div id="signup_div" >
+        <h2 >Name</h2>
+        <input id="name_signup"><br><br>
+        <h2 >Gender</h2>
+        <input id="gender_signup"><br><br>
+        <h2 >Date of Birth</h2>
+        <input type="date" id="dob_signup"><br><br>
+        <h2 >Username</h2>
+        <input id="user_signup">
+        <h2 >Password</h2>
+        <input id="pass_signup" type="password"><br><br>
+        <h2 >Reenter Password</h2>
+        <input id="reenter_pass" type="password"><br><br>
+        <button id="signup_button"> Signup </button>
+        <a href="login_page.html">
+        <button type="button">login</button>
+        </a>
+    </div>
+         <script>
+
+        const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/passwords";
+        const name_signup = document.getElementById('name_signup');
+        let gender_signup = document.getElementById('gender_signup');
+        let dob_signup = document.getElementById('dob_signup');
+        let signup_button = document.getElementById('signup_button');
+        let user_signup = document.getElementById('user_signup');
+        let pass_signup = document.getElementById('pass_signup');
+        let reenter_pass = document.getElementById('reenter_pass');
+        
+        signup_button.addEventListener("click",signup_fetch);
+
+
+        async function signup_fetch(){
+
+            if(name_signup.value==="" || gender_signup.value==="" || dob_signup.value==="" ||
+                user_signup.value==="" || pass_signup.value==="" 
+                || reenter_pass.value===""){
+                    alert("fill the feilds");
+                    return;
+            }
+
+            if(reenter_pass.value!=pass_signup.value){
+                alert ("password doesn't match");
+                return;
+            }
+            try{
+            const fetch_signup = await fetch(API)
+            const res = await fetch_signup.json();
+                // console.log("after 2nd await")
+            const k = res.find(u => u.username===user_signup.value)
+            if(k){
+                alert("Username already exists");
+                return;
+            }
+        
+            let obj={
+                        name:name_signup.value,
+                        gender:gender_signup.value,
+                        dob:dob_signup.value,
+                        username:user_signup.value,
+                        password:pass_signup.value,
+                        reels:new Array()
+                    }
+                    // console.log("passed the object")
+            const post_signup_data = await fetch(API,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(obj)
+            })
+            // console.log("post completed")
+
+            if(post_signup_data.ok){
+                window.location.href = "login_page.html"
+            }
+            else{
+                alert("no ok")
+            }
+              
+        }
+        catch(err){
+            alert("error")
+        }
+        }
+
+
+    </script>
+</body>
+</html>

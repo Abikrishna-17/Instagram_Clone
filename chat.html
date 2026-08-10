@@ -63,6 +63,10 @@ body{
                 const new_element = document.createElement('div')
                 new_element.textContent = message.value;
                 const more_options = document.createElement('select');
+                // more_options.innerHTML = `<option style="default:none"> ... </option>
+                //                             <option> delete </option>`;
+                // new_element.appendChild(more_options);
+                add_message.appendChild(new_element);
                 message.value = null;
             }
         })

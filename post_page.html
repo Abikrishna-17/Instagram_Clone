@@ -30,8 +30,9 @@
             const userid = localStorage.getItem("userid");
             const response = await fetch(`${API}/${userid}`);
             const user = await response.json();
-            const reel_arr = user.reels;
-            reel_arr.push(String(file.files[0].name))       
+            
+            
+            
         }
     </script>
 </body>

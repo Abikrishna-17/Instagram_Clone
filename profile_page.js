@@ -27,7 +27,7 @@ const logout_button = document.getElementById("logout_button");
 
 logout_button.addEventListener("click",()=>{
     localStorage.removeItem('userid');
-    window.location.href = "login_page.html";
+    window.location.href = "index.html";
 })
 
 const delete_button = document.getElementById("delete_button");
@@ -45,7 +45,7 @@ async function deleteAccount(){
 
     localStorage.removeItem("userId");
     alert("Account deleted successfully.");
-    window.location.href = "login_page.html";
+    window.location.href = "index.html";
 
     }
 }

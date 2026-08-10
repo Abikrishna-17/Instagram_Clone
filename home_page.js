@@ -28,6 +28,4 @@ display_queue.forEach(post=>{
         <video src="${post}" id="video_tag" controls></videos>
         `
     }
-
-    
 })

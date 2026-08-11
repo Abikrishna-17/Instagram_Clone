@@ -8,7 +8,7 @@
 </head>
 <body>
     <style>
-        #reels_container{
+        #all_container{
     display:flex;
     justify-content:center;
     flex-direction:column;
@@ -25,27 +25,47 @@
     </style>
     <div id="navbar"></div>
     <br>
-    <div id="reels_container">
-    <video id="video_tag"src="videos/1080x1920.mp4" controls></video>
-    <video id="video_tag" src="videos/1080x1920.mp4" controls> </video>
+    <div id="all_container">
     </div>
 
     <script src="navbar.js"></script>
-    <script>
-        
-        async function k() {
-    const response = await fetch("https://api.apify.com/v2/datasets/NNQF54GrZqpEk3h43/items?signature=MC4xNzg3NTYwODMwODA2LmNka1NKQTRvcVNuS1E2eHdSeE1F&format=json&clean=true");
+<script>
 
-    const user = await response.json();
+const array = ["videos/vid1.mp4","videos/vid2.mp4","videos/vid3.mp4","videos/vid4.mp4","videos/vid5.mp4","videos/vid6.mp4","videos/vid7.mp4","videos/vid8.mp4","videos/vid9.mp4"]
 
-    const video = document.getElementById("video_tag");
+function random_post(arr){
 
-    video.src = user[0].url;
+const display_queue = [];
+
+let n = arr.length;
+while(n>0){
+
+    const post = arr[Math.floor(Math.random()*arr.length)]
+    if(!display_queue.includes(post)){
+        display_queue.push(post);
+        n--;
+    }
 }
 
-k();
+const all_container = document.getElementById("all_container");
 
+display_queue.forEach(post=>{
+    
+    if(post.split("/")[0]==="img"){
+        all_container.innerHTML+= `
+        <img src="${post}" id="video_tag">
+        `
+    }
+    else{
+        all_container.innerHTML+= `
+        <video src="${post}" id="video_tag" controls controlsList="nodownload"></videos>
+        `
+    }
+})
+}
 
-    </script>
+random_post(array);
+
+</script>
 </body>
 </html>

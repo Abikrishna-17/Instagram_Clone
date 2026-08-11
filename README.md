@@ -1,2 +1,2 @@
 # Instagram_Clone
-This repo has contains my version of instagram
+This repo contains my version of instagram

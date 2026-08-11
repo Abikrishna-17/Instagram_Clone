@@ -49,3 +49,21 @@ async function deleteAccount(){
 
     }
 }
+
+async function display_post(){
+
+    const API = "";
+
+    const user = localStorage.getItem('userid');
+    const response = await fetch(`${API}/${user}`);
+    const users = await response.json();
+    const list_of_reels = users.reels;
+    const postlist = document.getElementById('postbyusers');
+    
+    list_of_reels.forEach(u=> {
+
+         postlist.innerHTML+= `<video src="${u}" style="padding-right:10px"></video>`
+    })
+
+}
+display_post();

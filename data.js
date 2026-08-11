@@ -32,7 +32,18 @@
 //     console.log(obj[m])
 // }
 
-for(let i=0;i<5;i++){
-    setTimeout(()=> console.log(i) ,i*1000)
-}
+// for(let i=0;i<5;i++){
+//     setTimeout(()=> console.log(i) ,i*1000)
+// }
 
+
+// let obj = {
+//     0:"abi",
+//     "length":1
+// }
+
+// let k = Array.from(obj);
+// console.log(k)
+
+
+let arr = [[],[],[]]

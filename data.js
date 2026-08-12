@@ -83,9 +83,10 @@
 // let visited = new Array(3).fill(false);
 // console.log(visited)
 
+const prompt = require("prompt-sync")();
 
-let str = "(-))"
-
-let k = str.replace("-","")
-
-console.log(str)
+let arr = [];
+for(let i=0;i<5;i++){
+    arr[i] = Number(prompt());
+}
+console.log(arr)

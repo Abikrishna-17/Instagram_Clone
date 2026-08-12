@@ -19,7 +19,7 @@
 
     <script>
         
-        const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/users";
+        const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/reels";
 
         const file = document.getElementById("choose_file");
         const post_btn = document.getElementById("post_button");
@@ -28,9 +28,13 @@
         async function postcontent(){
 
             const userid = localStorage.getItem("userid");
-            const response = await fetch(`${API}/${userid}`);
-            const user = await response.json();
-            
+            const response = await fetch(`${API}/${userid}`,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify()
+            });
             
             
         }

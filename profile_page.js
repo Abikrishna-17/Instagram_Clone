@@ -52,7 +52,7 @@ async function deleteAccount(){
 
 async function display_post(){
 
-    const API = "";
+    const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/reels";
 
     const user = localStorage.getItem('userid');
     const response = await fetch(`${API}/${user}`);
@@ -62,7 +62,7 @@ async function display_post(){
     
     list_of_reels.forEach(u=> {
 
-         postlist.innerHTML+= `<video src="${u}" style="padding-right:10px"></video>`
+         postlist.innerHTML+= `<video src="${u}" style="padding-right:50px" controls ></video>`
     })
 
 }

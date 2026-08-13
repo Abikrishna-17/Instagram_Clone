@@ -83,10 +83,29 @@
 // let visited = new Array(3).fill(false);
 // console.log(visited)
 
-const prompt = require("prompt-sync")();
+// const prompt = require("prompt-sync")();
 
-let arr = [];
-for(let i=0;i<5;i++){
-    arr[i] = Number(prompt());
-}
-console.log(arr)
+// let arr = [];
+// for(let i=0;i<5;i++){
+//     arr[i] = Number(prompt());
+// }
+// console.log(arr)
+
+
+// let arr = [1,2,3,3,4]
+
+// delete arr[0]
+// console.log(arr);
+
+const url = 'https://open-meteo.com';
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    const temp = data.current.temperature_2m;
+    const unit = data.current_units.temperature_2m;
+    console.log(`Current temperature: ${temp}${unit}`);
+  })
+  .catch(error => console.error('Error fetching weather:', error));
+
+  

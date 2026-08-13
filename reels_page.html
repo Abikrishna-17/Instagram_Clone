@@ -31,7 +31,19 @@
     <script src="navbar.js"></script>
 <script>
 
-const array = ["videos/vid1.mp4","videos/vid2.mp4","videos/vid3.mp4","videos/vid4.mp4","videos/vid5.mp4","videos/vid6.mp4","videos/vid7.mp4","videos/vid8.mp4","videos/vid9.mp4"]
+async function reel_get(){
+
+    const API = "https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/reels";
+    const response = await fetch(API);
+    const data = await response.json();
+    const array1 = [];
+
+    for(const val of data){
+        array1.push(...val.reels);
+    }
+    console.log(array1);
+    
+    const array = ["videos/vid1.mp4","videos/vid2.mp4","videos/vid3.mp4","videos/vid4.mp4","videos/vid5.mp4","videos/vid6.mp4","videos/vid7.mp4","videos/vid8.mp4","videos/vid9.mp4"]
 
 function random_post(arr){
 
@@ -64,7 +76,10 @@ display_queue.forEach(post=>{
 })
 }
 
-random_post(array);
+random_post(array1);
+}
+
+reel_get();
 
 </script>
 </body>

@@ -80,13 +80,12 @@
                 body:JSON.stringify(obj)
             })
 
-            const post_reelsdata = await fetch("https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/users",{
+            const post_reelsdata = await fetch("https://6a66fb27189fe5869eb6cfc7.mockapi.io/api/user/reels",{
                 method : "POST",
                 headers:{
                     "Content-Type":"application/json"
                 },
                 body:JSON.stringify({
-                    name:name_signup.value,
                     reels:[]
                 })
             })

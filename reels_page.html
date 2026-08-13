@@ -46,17 +46,7 @@ async function reel_get(){
 
 function random_post(arr){
 
-const display_queue = [];
-
-let n = arr.length;
-while(n>0){
-
-    const post = arr[Math.floor(Math.random()*arr.length)]
-    if(!display_queue.includes(post)){
-        display_queue.push(post);
-        n--;
-    }
-}
+const display_queue = [...arr].sort(() => Math.random() - 0.5);
 
 const all_container = document.getElementById("all_container");
 

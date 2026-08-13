@@ -97,15 +97,4 @@
 // delete arr[0]
 // console.log(arr);
 
-const url = 'https://open-meteo.com';
-
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    const temp = data.current.temperature_2m;
-    const unit = data.current_units.temperature_2m;
-    console.log(`Current temperature: ${temp}${unit}`);
-  })
-  .catch(error => console.error('Error fetching weather:', error));
-
-  
+console.log(undefined+1);

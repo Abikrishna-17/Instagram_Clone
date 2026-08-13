@@ -31,12 +31,12 @@
             const get = await fetch(`${API}/${userid}`);
             const get_data = await get.json();
 
+            get_data.reels.push(`videos/${file.files[0].name}`);
+
             const obj = {
                 id:String(userid),
-                reels:[]
+                reels:get_data.reels
             }
-
-            obj.reels = get_data.reels.push(file.name);
 
             const response = await fetch(`${API}/${userid}`,{
                 method:"PUT",
@@ -45,7 +45,9 @@
                 },
                 body:JSON.stringify(obj)
             });
-            
+            if(response.ok){
+                alert("posted successfully");
+            }
         }
     </script>
 </body>

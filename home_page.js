@@ -1,7 +1,5 @@
 
-
-
-const array = ["img/img1.jpeg","img/img2.jpeg","img/img3.jpeg","img/img4.jpeg","videos/1080x1920.mp4","videos/vid1.mp4","videos/vid2.mp4","videos/vid3.mp4","videos/vid4.mp4","videos/vid5.mp4","videos/vid6.mp4","videos/vid7.mp4","videos/vid8.mp4","videos/vid9.mp4"];
+const array = ["img/img1.jpeg","img/img2.jpeg","img/img3.jpeg","img/img4.jpeg","videos/vid1.mp4","videos/vid2.mp4","videos/vid3.mp4","videos/vid4.mp4","videos/vid5.mp4","videos/vid6.mp4","videos/vid7.mp4","videos/vid8.mp4","videos/vid9.mp4"];
 
 function random_post(arr){
 

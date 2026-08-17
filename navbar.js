@@ -52,3 +52,4 @@ navigator.geolocation.getCurrentPosition((position) => {
     weather()
 
 });
+

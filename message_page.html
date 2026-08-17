@@ -32,6 +32,11 @@
                 const search_result = res.filter(u => 
                     u.username.toLowerCase().includes(search.value.toLowerCase())
                 )
+                if(search_result.length==0) {
+                    results.innerText = "No user found";
+                    return;
+                }
+                
                 results.innerHTML = "";
                 search_result.forEach(user=>{
                     results.innerHTML += `
@@ -42,7 +47,7 @@
                 if(search.value===""){
                     results.innerHTML = "";
                 }
-            });
+            },500);
         })
 
     </script>

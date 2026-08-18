@@ -7,49 +7,11 @@
     <link rel="stylesheet" src="navbar.css">
 </head>
 <body>
-    <style>
-
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-}
-
-#add_message{
-    flex:1;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    padding:20px;
-}
-
-#add_message div{
-    align-self:flex-end;
-    padding:10px 15px;
-    border-radius:18px;
-    margin-bottom:10px;
-    max-width:70%;
-}
-
-#message{
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    width:300px;
-}
-
-#msg_btn{
-    position:fixed;
-    bottom:20px;
-    left:calc(50% + 170px);
-}
-    </style>
+    <div style="text-align:center">
     <input id="message">
     <button id="msg_btn"> send </button>
     <div id="add_message"></div>
+    </div>
     <script src="navbar.js"></script>
     <script>
 
